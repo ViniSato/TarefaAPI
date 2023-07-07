@@ -7,10 +7,10 @@ namespace Products.Repository
 {
     public class ProductRepository : ITarefaRepository
     {
-        protected readonly TarefaContext _context;
+        protected readonly TarefasContext _context;
         protected readonly DbSet<Tarefa> _tarefa;
 
-        public ProductRepository(TarefaContext context)
+        public ProductRepository(TarefasContext context)
         {
             _context = context;
             _tarefa = context.Set<Tarefa>();

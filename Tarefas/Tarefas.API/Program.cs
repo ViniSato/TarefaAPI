@@ -13,7 +13,7 @@ builder.Services.AddSwaggerGen();
 
 #region Database
 var connString = builder.Configuration.GetConnectionString("Default");
-builder.Services.AddDbContext<TarefaContext>(options => options.UseSqlite(connString));
+builder.Services.AddDbContext<TarefasContext>(options => options.UseSqlite(connString));
 #endregion
 
 builder.Services.AddScoped<ITarefaService, TarefaService>();
