@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+	<ItemGroup>
+		<ProjectReference Include="..\Tarefas.Repository\Tarefas.Repository.csproj" />
+	</ItemGroup>
+
 </Project>

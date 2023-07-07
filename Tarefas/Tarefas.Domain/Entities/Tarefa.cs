@@ -1,12 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Tarefas.Domain.Entities
 {
-    internal class Tarefa
+    public class Tarefa
     {
+        public Tarefa(string titulo, string descricao, bool concluida, DateTime data) => (Id, Titulo, Descricao, Concluida, Data) = (0, titulo, descricao, concluida, data);
+        public Tarefa(int id, string titulo, string descricao, bool concluida, DateTime data) => (Id, Titulo, Descricao, Concluida, Data) = (id, titulo, descricao, concluida, data);
+
+        [Key]
+        public int Id { get; set; }
+        [StringLength(100)]
+        [Required]
+        public string Titulo { get; set; }
+        public string Descricao { get; set; }
+        public bool Concluida { get; set; }
+        public DateTime Data { get; set; }
     }
 }

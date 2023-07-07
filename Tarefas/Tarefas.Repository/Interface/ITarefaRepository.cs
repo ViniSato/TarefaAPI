@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Tarefas.Domain.Entities;
 
 namespace Tarefas.Repository.Interface
 {
-    internal interface ITarefaRepository
+    public interface ITarefaRepository
     {
+        Tarefa Add(Tarefa tarefa);
+        Task<IEnumerable<Tarefa>> GetTarefas();
+        Task<Tarefa> GetById(int id);
+        Tarefa Update(Tarefa tarefa);
+        bool Delete(int id);
     }
 }

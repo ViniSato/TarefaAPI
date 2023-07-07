@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Tarefas.Domain.Exceptions
+﻿namespace Tarefas.Domain.Exceptions
 {
-    internal class TarefaException
+    public class TarefaException : Exception
     {
+        public TarefaException(string message) : base(message)
+        {
+        }
     }
 }

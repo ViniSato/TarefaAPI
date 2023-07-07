@@ -15,4 +15,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Tarefas.Data\Tarefas.Data.csproj" />
+    <ProjectReference Include="..\Tarefas.Domain\Tarefas.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
