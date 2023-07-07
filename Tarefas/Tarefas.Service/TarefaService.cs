@@ -1,5 +1,4 @@
 ﻿using Tarefas.Domain.Entities;
-using Tarefas.Domain.Exceptions;
 using Tarefas.Domain.ViewModel;
 using Tarefas.Repository.Interface;
 using Tarefas.Service.Interface;
@@ -22,7 +21,7 @@ namespace Tarefas.Service
         public async Task<Tarefa> GetById(int id)
         {
             var tarefa = await _repository.GetById(id);
-            if (tarefa == null) throw new TarefaException("Tarefa não existe");
+            if (tarefa == null) throw new Exception("Tarefa não existe");
             return tarefa;
         }
         public Tarefa Add(TarefaViewModel tarefa)

@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Tarefas.Domain.Entities;
-using Tarefas.Domain.Exceptions;
 using Tarefas.Domain.ViewModel;
 using Tarefas.Service.Interface;
 
@@ -27,7 +26,7 @@ namespace Tarefas.API.Controllers
                 var tarefa = await _tarefa.GetById(id);
                 return tarefa;
             }
-            catch (TarefaException ex)
+            catch (Exception ex)
             {
                 return NotFound(ex.Message);
             }
