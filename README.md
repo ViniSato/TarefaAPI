@@ -28,9 +28,13 @@ Para avaliar o funcionamento da aplicação Tarefa.API, siga os passos abaixo:
 A API segue uma estrutura em camadas para manter uma separação clara das responsabilidades. A estrutura do projeto é a seguinte:
 
 - **Controllers**: Responsáveis por lidar com as requisições HTTP e direcionar para os serviços apropriados. Os controllers são responsáveis pela entrada e saída de dados da API.
+  
 - **Services**: Contêm a lógica de negócio e realizam operações nos dados. Os serviços encapsulam a lógica de negócio e interagem com os repositórios para realizar as operações CRUD.
+  
 - **ViewModels**: Contêm os objetos de transferência de dados utilizados para entrada e saída da API. Os view models são utilizados para definir a estrutura dos dados que são enviados e recebidos pela API, permitindo uma separação clara entre as entidades do domínio e os dados da API.
+  
 - **Repositories**: Responsáveis pela comunicação com o banco de dados e operações de persistência. Os repositórios são responsáveis por recuperar e persistir os dados no banco de dados, abstraindo os detalhes de acesso ao banco de dados para os serviços.
+  
 - **Domain**: Contém as entidades de domínio da aplicação. As entidades do domínio representam os objetos principais manipulados pela API e contêm as regras de negócio relacionadas a essas entidades.
 
 Essa estrutura em camadas ajuda a manter a separação de responsabilidades, facilita a manutenção do código e promove a reutilização de componentes.
