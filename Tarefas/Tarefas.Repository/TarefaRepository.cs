@@ -24,17 +24,17 @@ namespace Products.Repository
             _context.SaveChanges();
             return tarefa;
         }
-        public Tarefa Update(Tarefa product)
+        public Tarefa Update(Tarefa tarefa)
         {
-            _tarefa.Update(product);
+            _tarefa.Update(tarefa);
             _context.SaveChanges();
-            return product;
+            return tarefa;
         }
         public bool Delete(int id)
         {
-            var product = _tarefa.Find(id);
-            if (product == null) return false;
-            _tarefa.Remove(product);
+            var tarefa = _tarefa.Find(id);
+            if (tarefa == null) return false;
+            _tarefa.Remove(tarefa);
             _context.SaveChanges();
             return true;
         }

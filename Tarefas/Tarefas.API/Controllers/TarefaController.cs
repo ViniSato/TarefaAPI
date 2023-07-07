@@ -6,7 +6,6 @@ using Tarefas.Service.Interface;
 
 namespace Tarefas.API.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class TarefaController : ControllerBase
@@ -16,6 +15,7 @@ namespace Tarefas.API.Controllers
         {
             _tarefa = tarefa;
         }
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Tarefa>>> GetTarefas() => Ok(await _tarefa.GetTarefas());
 
@@ -23,10 +23,10 @@ namespace Tarefas.API.Controllers
         public async Task<ActionResult<Tarefa>> GetProductById([FromRoute] int id) => Ok(await _tarefa.GetById(id));
 
         [HttpPost]
-        public ActionResult<Tarefa> AddProducts([FromBody] TarefaViewModel product) => Created("", _tarefa.Add(product));
+        public ActionResult<Tarefa> AddProducts([FromBody] TarefaViewModel tarefa) => Created("", _tarefa.Add(tarefa));
 
         [HttpPut("{id:int}")]
-        public ActionResult<Tarefa> UpdateProduct([FromRoute] int id, [FromBody] TarefaViewModel product) => Created("", _tarefa.Update(id, product));
+        public ActionResult<Tarefa> UpdateProduct([FromRoute] int id, [FromBody] TarefaViewModel tarefa) => Created("", _tarefa.Update(id, tarefa));
 
         [HttpDelete("{id:int}")]
         public ActionResult<bool> DeleteProductById([FromRoute] int id) => Ok(_tarefa.Delete(id));

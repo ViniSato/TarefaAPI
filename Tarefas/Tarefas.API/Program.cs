@@ -1,15 +1,26 @@
+using Microsoft.EntityFrameworkCore;
+using Tarefas.Data;
+using Tarefas.Service.Interface;
+using Tarefas.Service;
+using Products.Repository;
+using Tarefas.Repository.Interface;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+#region Database
+var connString = builder.Configuration.GetConnectionString("Default");
+builder.Services.AddDbContext<TarefaContext>(options => options.UseSqlite(connString));
+#endregion
+
+builder.Services.AddScoped<ITarefaService, TarefaService>();
+builder.Services.AddScoped<ITarefaRepository, ProductRepository>();
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
