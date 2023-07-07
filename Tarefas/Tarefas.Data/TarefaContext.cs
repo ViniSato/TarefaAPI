@@ -9,7 +9,7 @@ namespace Tarefas.Data
         {
         }
 
-        public virtual DbSet<Tarefa> Product { get; set; }
+        public virtual DbSet<Tarefa> Tarefa { get; set; }
 
     }
 }
