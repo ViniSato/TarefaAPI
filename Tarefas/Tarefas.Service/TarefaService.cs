@@ -21,19 +21,19 @@ namespace Tarefas.Service
         }
         public async Task<Tarefa> GetById(int id)
         {
-            var product = await _repository.GetById(id);
-            if (product == null) throw new TarefaException("Tarefa não existe");
-            return product;
+            var tarefa = await _repository.GetById(id);
+            if (tarefa == null) throw new TarefaException("Tarefa não existe");
+            return tarefa;
         }
         public Tarefa Add(TarefaViewModel tarefa)
         {
-            var newProduct = new Tarefa(tarefa.Titulo, tarefa.Descricao, tarefa.Concluida, tarefa.Data);
-            return _repository.Add(newProduct);
+            var newTarefa = new Tarefa(tarefa.Titulo, tarefa.Descricao, tarefa.Concluida, tarefa.Data);
+            return _repository.Add(newTarefa);
         }
         public Tarefa Update(int id, TarefaViewModel tarefa)
         {
-            var newProduct = new Tarefa(id, tarefa.Titulo, tarefa.Descricao, tarefa.Concluida, tarefa.Data);
-            return _repository.Update(newProduct);
+            var newTarefa = new Tarefa(id, tarefa.Titulo, tarefa.Descricao, tarefa.Concluida, tarefa.Data);
+            return _repository.Update(newTarefa);
         }
         public bool Delete(int id) => _repository.Delete(id);
     }

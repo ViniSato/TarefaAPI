@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Tarefas.Data;
 using Tarefas.Service.Interface;
 using Tarefas.Service;
-using Products.Repository;
+using Tarefas.Repository;
 using Tarefas.Repository.Interface;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,7 +17,7 @@ builder.Services.AddDbContext<TarefasContext>(options => options.UseSqlite(connS
 #endregion
 
 builder.Services.AddScoped<ITarefaService, TarefaService>();
-builder.Services.AddScoped<ITarefaRepository, ProductRepository>();
+builder.Services.AddScoped<ITarefaRepository, TarefaRepository>();
 
 var app = builder.Build();
 

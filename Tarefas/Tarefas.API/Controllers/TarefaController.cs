@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Tarefas.Domain.Entities;
+using Tarefas.Domain.Exceptions;
 using Tarefas.Domain.ViewModel;
 using Tarefas.Service.Interface;
 
@@ -20,15 +20,26 @@ namespace Tarefas.API.Controllers
         public async Task<ActionResult<IEnumerable<Tarefa>>> GetTarefas() => Ok(await _tarefa.GetTarefas());
 
         [HttpGet("{id:int}")]
-        public async Task<ActionResult<Tarefa>> GetProductById([FromRoute] int id) => Ok(await _tarefa.GetById(id));
+        public async Task<ActionResult<Tarefa>> GetTarefaById([FromRoute] int id)
+        {
+            try
+            {
+                var tarefa = await _tarefa.GetById(id);
+                return tarefa;
+            }
+            catch (TarefaException ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
 
         [HttpPost]
-        public ActionResult<Tarefa> AddProducts([FromBody] TarefaViewModel tarefa) => Created("", _tarefa.Add(tarefa));
+        public ActionResult<Tarefa> AddTarefa([FromBody] TarefaViewModel tarefa) => Created("", _tarefa.Add(tarefa));
 
         [HttpPut("{id:int}")]
-        public ActionResult<Tarefa> UpdateProduct([FromRoute] int id, [FromBody] TarefaViewModel tarefa) => Created("", _tarefa.Update(id, tarefa));
+        public ActionResult<Tarefa> UpdateTarefa([FromRoute] int id, [FromBody] TarefaViewModel tarefa) => Created("", _tarefa.Update(id, tarefa));
 
         [HttpDelete("{id:int}")]
-        public ActionResult<bool> DeleteProductById([FromRoute] int id) => Ok(_tarefa.Delete(id));
+        public ActionResult<bool> DeleteTarefaById([FromRoute] int id) => Ok(_tarefa.Delete(id));
     }
 }

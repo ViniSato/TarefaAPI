@@ -7,6 +7,8 @@ namespace Tarefas.Domain.ViewModel
         [StringLength(100)]
         [Required]
         public string Titulo { get; set; }
+        [StringLength(100)]
+        [Required]
         public string Descricao { get; set; }
         public bool Concluida { get; set; }
         public DateTime Data { get; set; }

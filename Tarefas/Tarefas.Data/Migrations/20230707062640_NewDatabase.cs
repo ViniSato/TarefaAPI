@@ -18,7 +18,7 @@ namespace Tarefas.Data.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Titulo = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
-                    Descricao = table.Column<string>(type: "TEXT", nullable: false),
+                    Descricao = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
                     Concluida = table.Column<bool>(type: "INTEGER", nullable: false),
                     Data = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },

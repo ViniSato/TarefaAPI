@@ -3,14 +3,14 @@ using Tarefas.Data;
 using Tarefas.Domain.Entities;
 using Tarefas.Repository.Interface;
 
-namespace Products.Repository
+namespace Tarefas.Repository
 {
-    public class ProductRepository : ITarefaRepository
+    public class TarefaRepository : ITarefaRepository
     {
         protected readonly TarefasContext _context;
         protected readonly DbSet<Tarefa> _tarefa;
 
-        public ProductRepository(TarefasContext context)
+        public TarefaRepository(TarefasContext context)
         {
             _context = context;
             _tarefa = context.Set<Tarefa>();
