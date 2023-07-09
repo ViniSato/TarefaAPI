@@ -20,9 +20,9 @@ namespace Tarefas.Service
         }
         public async Task<Tarefa> GetById(int id)
         {
-            var tarefa = await _repository.GetById(id);
-            if (tarefa == null) throw new Exception("Tarefa não existe");
-            return tarefa;
+            var resposta = await _repository.GetById(id);
+            if (resposta == null) throw new Exception("Tarefa inexistente");
+            return resposta;
         }
         public Tarefa Add(TarefaViewModel tarefa)
         {
@@ -32,8 +32,14 @@ namespace Tarefas.Service
         public Tarefa Update(int id, TarefaViewModel tarefa)
         {
             var newTarefa = new Tarefa(id, tarefa.Titulo, tarefa.Descricao, tarefa.Concluida, tarefa.Data);
+            if (tarefa == null) throw new Exception("Tarefa inexistente");
             return _repository.Update(newTarefa);
         }
-        public bool Delete(int id) => _repository.Delete(id);
+        public bool Delete(int id)
+        {
+            var resposta = _repository.Delete(id);
+            if (resposta == null || resposta == false) throw new Exception("Tarefa inexistente");
+            return resposta;
+        }
     }
 }

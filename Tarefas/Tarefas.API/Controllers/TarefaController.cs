@@ -23,8 +23,8 @@ namespace Tarefas.API.Controllers
         {
             try
             {
-                var tarefa = await _tarefa.GetById(id);
-                return tarefa;
+                var resposta = await _tarefa.GetById(id);
+                return resposta;
             }
             catch (Exception ex)
             {
@@ -36,9 +36,31 @@ namespace Tarefas.API.Controllers
         public ActionResult<Tarefa> AddTarefa([FromBody] TarefaViewModel tarefa) => Created("", _tarefa.Add(tarefa));
 
         [HttpPut("{id:int}")]
-        public ActionResult<Tarefa> UpdateTarefa([FromRoute] int id, [FromBody] TarefaViewModel tarefa) => Created("", _tarefa.Update(id, tarefa));
+        public ActionResult<Tarefa> UpdateTarefa([FromRoute] int id, [FromBody] TarefaViewModel tarefa)
+        {
+            try
+            {
+                var resposta = Created("", _tarefa.Update(id, tarefa));
+                return resposta;
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
 
         [HttpDelete("{id:int}")]
-        public ActionResult<bool> DeleteTarefaById([FromRoute] int id) => Ok(_tarefa.Delete(id));
+        public ActionResult<bool> DeleteTarefaById([FromRoute] int id)
+        {
+            try
+            {
+                var resposta = Ok(_tarefa.Delete(id));
+                return resposta;    
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
     }
 }
